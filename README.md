@@ -89,11 +89,18 @@ src/path_planning/scripts/path_planning.py
 ## Test your code
 roslaunch <package_name> <file>.launch
 
-Commit & push changes
+---
+
+## Commit & push changes
+
 git checkout dev
+
 git pull
+
 git add .
+
 git commit -m "what you implemented"
+
 git push
 
 ---
