@@ -1,93 +1,124 @@
-# Comp6009 Group project group8
+# COMP6009 Cognitive Robotics — Group 8
+
+## Maintainer & Contributors
+- **Nathaniel Kisakye (nk479)** — Maintainer  
+- **Samuel Ametefe (sa2090)** — Contributor  
+- **Princeston Kingston (pk419)** — Contributor  
+- **Joe Belgard (jb2276)** — Contributor  
+
+---
+
+## Project Overview
+This repository contains our work for the **COMP6009 Group Project** —  
+*Shortest-Path Navigation using Turtlebot3 in Gazebo and RViz.*
+
+The workspace has been preconfigured for **Docker**, ensuring everyone develops and tests in the same ROS environment.  
+All packages and launch files are already included, so all you need to do is **clone**, **build**, and **start coding**.
+
+> **Note:**  
+> `build/` and `devel/` folders are excluded via `.gitignore`.  
+> Git automatically ignores them when you commit or push — so you never have to worry about uploading large build folders.
+
+---
+
+## Repository Structure
+
+assessment1_ws/
+├── src/
+│ ├── custom_gazebo_world/ → Gazebo maze, maps, world + launch files
+│ ├── path_planning/ → A* algorithm, scripts, params, RViz config
+│ ├── pp_msgs/ → Custom message & service definitions
+│ ├── srv_client_plugin/ → Service bridge for move_base integration
+│ └── turtlebot3_model/ → Robot model (URDF, meshes)
+├── .catkin_workspace
+├── .gitignore
+└── README.md
+>  *Do **not** edit `build/` or `devel/` — those are auto-generated after building.*
+ 
+## Environment Setup (Docker)
+
+Setting up Docker for this project is straightforward.  
+If you need a refresher, check the Moodle guide here:  
+[University Docker Setup (Moodle)](https://moodle.kent.ac.uk/2025/mod/wiki/view.php?id=99986)
+
+The steps below show how to clone and build this workspace **inside Docker**.
+
+---
+
+### Step 1 — Ensure Docker is running
+Start **Docker Desktop** before continuing.
+
+Then open your container terminal (you should see `rosoperator@...`).
+
+---
+
+### Step 2 — Clone and build the workspace
+cd ~                                # Go to your home directory
+git clone https://git.cs.kent.ac.uk/nk479/comp6009-group-project-group8.git assessment1_ws
+cd assessment1_ws                   # Enter the workspace folder
+catkin_make                         # Build the workspace (creates build/ & devel/)
+source devel/setup.bash             # Source the environment
+
+if you wish to auto source you can do it by doin echo "source ~/assessment1_ws/devel/setup.bash" >> ~/.bashrc
+refrence: (https://industrial-training-master.readthedocs.io/en/foxy/_source/session1/ros2/0-ROS-Setup.html)
+
+The workspace should be built and be ready to run now
+
+Working on the Project
+Always build inside Docker
+
+Run catkin_make inside the container, never on Windows.
+
+Each session
+cd ~/assessment1_ws
+source devel/setup.bash
+
+Edit your package files
+
+Modify or add scripts inside:
+
+src/<your_package>/
 
 
+Example:
 
-## Getting started
+src/path_planning/scripts/path_planning.py
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+Test your code
+roslaunch <package_name> <file>.launch
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+Commit & push changes
+git checkout dev
+git pull
+git add .
+git commit -m "what you implemented"
+git push
 
-## Add your files
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+Team Guidelines
 
-```
-cd existing_repo
-git remote add origin https://git.cs.kent.ac.uk/nk479/comp6009-group-project-group8.git
-git branch -M main
-git push -uf origin main
-```
+Always pull before pushing.
 
-## Integrate with your tools
+Keep commits short, clear, and meaningful.
 
-- [ ] [Set up project integrations](https://git.cs.kent.ac.uk/nk479/comp6009-group-project-group8/-/settings/integrations)
+Test in RViz or Gazebo before merging.
 
-## Collaborate with your team
+If something breaks, message group chat.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+Ask before editing someone else’s code.
 
-## Test and Deploy
 
-Use the built-in continuous integration in GitLab.
+Submission Checklist
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+Before submitting on Moodle:
 
-***
+git pull origin main
 
-# Editing this README
+Run catkin_make inside Docker (to rebuild)
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+Test all launch files
 
-## Suggestions for a good README
+Zip the entire assessment1_ws/ folder, including build/ and devel/
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+Upload the zip + report PDF to Moodle
 
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
