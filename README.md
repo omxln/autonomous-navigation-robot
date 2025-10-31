@@ -25,15 +25,17 @@ All packages and launch files are already included, so all you need to do is **c
 
 assessment1_ws/
 ├── src/
-│   ├── custom_gazebo_world/     → Gazebo maze, maps, world + launch files
-│   ├── path_planning/           → A* algorithm, scripts, params, RViz config
-│   ├── pp_msgs/                 → Custom message & service definitions
-│   ├── srv_client_plugin/       → Service bridge for move_base integration
-│   └── turtlebot3_model/        → Robot model (URDF, meshes)
+│ ├── custom_gazebo_world/ → Gazebo maze, maps, world + launch files
+│ ├── path_planning/ → A* algorithm, scripts, params, RViz config
+│ ├── pp_msgs/ → Custom message & service definitions
+│ ├── srv_client_plugin/ → Service bridge for move_base integration
+│ └── turtlebot3_model/ → Robot model (URDF, meshes)
 ├── .catkin_workspace
 ├── .gitignore
 └── README.md
->  *Do **not** edit `build/` or `devel/` — those are auto-generated after building.*
+
+
+> 🛑 *Do **not** edit `build/` or `devel/` — those are auto-generated after building.*
  
 ## Environment Setup (Docker)
 
