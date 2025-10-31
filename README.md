@@ -63,8 +63,8 @@ if you wish to auto source you can do it by doin echo "source ~/assessment1_ws/d
 refrence: (https://industrial-training-master.readthedocs.io/en/foxy/_source/session1/ros2/0-ROS-Setup.html)
 
 The workspace should be built and be ready to run now
-
-Working on the Project
+---
+##Working on the Project
 Always build inside Docker
 
 Run catkin_make inside the container, never on Windows.
@@ -84,7 +84,7 @@ Example:
 
 src/path_planning/scripts/path_planning.py
 
-Test your code
+##Test your code
 roslaunch <package_name> <file>.launch
 
 Commit & push changes
@@ -95,7 +95,7 @@ git commit -m "what you implemented"
 git push
 
 
-Team Guidelines
+##Team Guidelines
 
 Always pull before pushing.
 
@@ -108,7 +108,7 @@ If something breaks, message group chat.
 Ask before editing someone else’s code.
 
 
-Submission Checklist
+##Submission Checklist
 
 Before submitting on Moodle:
 
