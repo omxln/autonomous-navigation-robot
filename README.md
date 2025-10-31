@@ -23,16 +23,8 @@ All packages and launch files are already included, so all you need to do is **c
 
 ## Repository Structure
 
-assessment1_ws/
-├── src/
-│ ├── custom_gazebo_world/ → Gazebo maze, maps, world + launch files
-│ ├── path_planning/ → A* algorithm, scripts, params, RViz config
-│ ├── pp_msgs/ → Custom message & service definitions
-│ ├── srv_client_plugin/ → Service bridge for move_base integration
-│ └── turtlebot3_model/ → Robot model (URDF, meshes)
-├── .catkin_workspace
-├── .gitignore
-└── README.md
+![Repository Structure](Screenshot_2025-10-31_163553.png)
+
 
 
 > 🛑 *Do **not** edit `build/` or `devel/` — those are auto-generated after building.*
