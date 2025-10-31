@@ -84,6 +84,8 @@ Example:
 
 src/path_planning/scripts/path_planning.py
 
+---
+
 ##Test your code
 roslaunch <package_name> <file>.launch
 
@@ -94,6 +96,7 @@ git add .
 git commit -m "what you implemented"
 git push
 
+---
 
 ##Team Guidelines
 
@@ -107,6 +110,7 @@ If something breaks, message group chat.
 
 Ask before editing someone else’s code.
 
+---
 
 ##Submission Checklist
 
