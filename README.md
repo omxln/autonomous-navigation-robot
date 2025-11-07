@@ -21,6 +21,15 @@ All packages and launch files are already included, so all you need to do is **c
 
 ---
 
+## Cleaning up previous bots
+
+```sh
+rosnode kill /gazebo /gazebo_gui 2>/dev/null || true
+killall -9 gzserver gzclient 2>/dev/null || true
+source devel/setup.bash
+```
+
+
 ## Repository Structure
 
 ![Repository Structure](Screenshot_2025-10-31_163553.png)
@@ -86,7 +95,7 @@ roslaunch <package_name> <file>.launch
 ---
 
 ## Commit & push changes
-
+```
 git checkout dev
 
 git pull
@@ -96,7 +105,7 @@ git add .
 git commit -m "what you implemented"
 
 git push
-
+```
 ---
 
 ## Team Guidelines
