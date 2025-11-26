@@ -1,11 +1,6 @@
 build/
 devel/
 logs/
-*.bag
-*.pgm~
-*.yaml~
 __pycache__/
 .vscode/
-.idea/
 *.log
-*~
