@@ -1,0 +1,19 @@
+#!/bin/bash
+Helpful Commands:
+
+killall -9 roscore rosmaster roslaunch gzserver gzclient rviz
+
+Launch Gazebo:
+cd ~/comp6009-group-project-group8
+source devel/setup.bash
+roslaunch custom_gazebo_world custom_world.launch
+
+Launch RVIZ:
+cd ~/comp6009-group-project-group8
+source devel/setup.bash
+roslaunch path_planning turtlebot3_custom_world.launch
+
+
+<param name="min_particles" value="500"/>
+<param name="max_particles" value="3000"/>
+<param name="transform_tolerance" value="0.5"/>

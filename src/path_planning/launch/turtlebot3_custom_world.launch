@@ -5,10 +5,10 @@
   <arg name="move_forward_only" default="false"/>
 
   <!-- maps -->
-  <arg name="map_file" default="$(find custom_gazebo_world)/maps/rtab_maze_map.yaml"/>
+  <arg name="map_file" default="$(find custom_gazebo_world)/maps/turtlebot3_karto.yaml"/>
   
   <!-- rviz -->
-  <arg name="rvizconfig" default="$(find path_planning)/rviz/rtab_maze_world.rviz"/>
+  <arg name="rvizconfig" default="$(find path_planning)/rviz/maze_kartos.rviz"/>
   <node if="$(arg open_rviz)" name="rviz" pkg="rviz" type="rviz" respawn="false" args="-d $(arg rvizconfig)"/>
   
   <!-- Map server -->
@@ -35,9 +35,9 @@
     <param name="base_frame_id" value="base_footprint"/>
     <param name="global_frame_id" value="map"/>
 
-    <!--  <param name="initial_pose_x" value="-0.987201"/> -->
-    <!--  <param name="initial_pose_y" value="1.794858"/> -->
-    <!--  <param name="initial_pose_a" value="-0.001003"/> -->
+    <param name="initial_pose_x" value="-0.786360"/>
+    <param name="initial_pose_y" value="-1.723620"/>
+    <param name="initial_pose_a" value="-0.001003"/>
     
   </node>
   

@@ -21,7 +21,7 @@ def make_plan(req):
   # side of each grid map square in meters
   resolution = 0.05
   # origin of grid map
-  origin = [-10.525000, -10.525000, 0.000000] #hint: find this in your YAML map file
+  origin = [-3.927193, -3.872803, 0.000000] #hint: find this in your YAML map file
 
   grid_visualisation = GridViz(costmap, resolution, origin, start, goal, width)
 
