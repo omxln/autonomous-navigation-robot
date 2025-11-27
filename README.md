@@ -2,9 +2,9 @@
 
 ## Maintainer & Contributors
 - **Nathaniel Kisakye (nk479)** — Maintainer  
-- **Samuel Ametefe (sa2090)** — Contributor  
-- **Princeston Kingston (pk419)** — Contributor  
-- **Joe Belgard (jb2276)** — Contributor  
+- **Samuel Ametefe (sa2090)** — Maintainer  
+-   
+- 
 
 ---
 
