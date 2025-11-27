@@ -13,11 +13,11 @@ def a_star(start, goal, width, height, costmap, resolution, origin, grid_visuali
     # Basic validation
     if start < 0 or start >= len(costmap):
         rospy.logerr("Start node out of bounds.")
-        return []
+        return [], 0
 
     if goal < 0 or goal >= len(costmap):
         rospy.logerr("Goal node out of bounds.")
-        return []
+        return [], 0
 
     if costmap[start] > 150:
         rospy.logwarn("Start may be inside an obstacle (cost > 150).")
@@ -25,11 +25,11 @@ def a_star(start, goal, width, height, costmap, resolution, origin, grid_visuali
     if costmap[goal] > 150:
         rospy.logwarn("Goal may be inside an obstacle (cost > 150).")
 
-    open_set = []                     
-    closed_set = set()                
-    g_costs = {start: 0.0}           
-    parents = {start: None}           
-    examined_nodes = 0                
+    open_set = []
+    closed_set = set()
+    g_costs = {start: 0.0}
+    parents = {start: None}
+    examined_nodes = 0
 
     # Heuristic
     def heuristic(n1, n2):
@@ -45,7 +45,6 @@ def a_star(start, goal, width, height, costmap, resolution, origin, grid_visuali
     max_iterations = 100000
     iteration = 0
 
-    
     while open_set and iteration < max_iterations:
         iteration += 1
 
@@ -77,19 +76,7 @@ def a_star(start, goal, width, height, costmap, resolution, origin, grid_visuali
                 except Exception:
                     pass
 
-        
-            path_length = len(path)
-            expanded_nodes = examined_nodes - path_length
-
-            rospy.loginfo("A* METRICS")
-            rospy.loginfo("Path length: %d nodes", path_length)
-            rospy.loginfo("Total examined: %d", examined_nodes)
-            rospy.loginfo("Expanded nodes: %d", expanded_nodes)
-            rospy.loginfo("Epsilon: %.2f", epsilon)
-            rospy.loginfo("Iterations: %d", iteration)
-            
-
-            return path
+            return path, examined_nodes
 
         current_g = g_costs[current]
 
@@ -105,7 +92,6 @@ def a_star(start, goal, width, height, costmap, resolution, origin, grid_visuali
             tentative_g = current_g + move_cost
 
             if neighbor_index not in g_costs or tentative_g < g_costs[neighbor_index]:
-
                 g_costs[neighbor_index] = tentative_g
                 parents[neighbor_index] = current
 
@@ -120,4 +106,4 @@ def a_star(start, goal, width, height, costmap, resolution, origin, grid_visuali
                     pass
 
     rospy.logwarn("A* failed to find a path after %d nodes.", examined_nodes)
-    return []
+    return [], examined_nodes

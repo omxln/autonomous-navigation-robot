@@ -1,8 +1,8 @@
 <launch>
   <!-- you may need to change your robot spawning position -->
   <arg name="model" default="burger"/>
-  <arg name="x_pos" default="-0.786360"/>      
-  <arg name="y_pos" default="-1.723620"/>       
+  <arg name="x_pos" default="-1.786360"/>      
+  <arg name="y_pos" default="-3.32"/>       
   <arg name="z_pos" default="-0.001003"/>
   
   <arg name="world_file" default="$(find custom_gazebo_world)/worlds/maze_world_final.world"/>
