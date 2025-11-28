@@ -8,7 +8,7 @@ from algorithms.neighbors import find_neighbors
 
 def a_star(start, goal, width, height, costmap, resolution, origin, grid_visualisation):
 
-    epsilon = 1.5  # between 1.2-2.0. can make it greedier to speed it up
+    epsilon = 1.5  # between 1.2-2.0
 
     # Basic validation
     if start < 0 or start >= len(costmap):
