@@ -1,0 +1,11 @@
+[33mcommit 41a85d1fe4c383e4da7ee6e9a512f18e8dcf6d1b[m[33m ([m[1;36mHEAD -> [m[1;32mdev[m[33m, [m[1;31morigin/dev[m[33m)[m
+Author: sa2090 <sa2090@kent.ac.uk>
+Date:   Tue Nov 25 23:36:36 2025 +0000
+
+    implemented a* search and more maps
+
+[33mcommit 1c70f61afab02eb64dc48003fcbfa15412bda4b6[m
+Author: Nathaniel Kisakye <nk479@kent.ac.uk>
+Date:   Fri Oct 31 13:48:05 2025 +0000
+
+    Initial commit - added assessment1_ws workspace
