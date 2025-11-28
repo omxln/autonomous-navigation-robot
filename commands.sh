@@ -4,13 +4,11 @@ Helpful Commands:
 killall -9 roscore rosmaster roslaunch gzserver gzclient rviz
 
 Launch Gazebo:
-export TURTLEBOT3_MODEL=burger
 cd ~/comp6009-group-project-group8
 source devel/setup.bash
 roslaunch custom_gazebo_world custom_world.launch
 
 Launch RVIZ:
-export TURTLEBOT3_MODEL=burger
 cd ~/comp6009-group-project-group8
 source devel/setup.bash
 roslaunch path_planning turtlebot3_custom_world.launch
