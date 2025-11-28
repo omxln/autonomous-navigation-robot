@@ -120,7 +120,7 @@ roslaunch path_planning turtlebot3_custom_world.launch
 ---
 # SLAM Methods Used
 Within the repository we have three SLAM options available: Hector, RTAB, and Karto. We ultimately chose to use Karto. Its generated `.yaml` and `.pgm` files are saved under `turtlebot3_karto`, and the map is loaded in RViz as `maze_karto` as specified in the launch file.
-Further justification for choosing Karto is provided in the individual report.
+Further justification for choosing Karto is provided in the project report.
 
 
 
