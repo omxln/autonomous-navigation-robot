@@ -3,8 +3,7 @@
 ## Maintainers
 - **Nathaniel Kisakye (nk479)** — Maintainer  
 - **Samuel Ametefe (sa2090)** — Maintainer  
-- **Princeston Kingston (pk419)**
-- **Joe Belgard (jb2276)**
+
 
 ---
 
