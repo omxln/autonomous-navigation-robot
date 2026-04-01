@@ -1,178 +1,103 @@
-# COMP6009 Cognitive Robotics — Group 8
+# COMP6009 — Autonomous Robot Navigation
+Autonomous mobile robot navigation system built with ROS1, TurtleBot3, and Gazebo. Implements SLAM for real-time mapping and localisation, and A* pathfinding for autonomous navigation in simulated environments.
 
-## Maintainers
-- **Nathaniel Kisakye (nk479)** — Maintainer  
-- **Samuel Ametefe (sa2090)** — Maintainer  
+> University of Kent — COMP6009 Cognitive Robotics | Grade: 95%
 
+---
+
+## Technologies
+- ROS1 (Noetic)
+- TurtleBot3
+- Gazebo / RViz
+- SLAM (Karto)
+- A* Pathfinding
+- Python
+- Docker
 
 ---
 
 ## Project Overview
-This repository contains our work for the **COMP6009 Group Project** —  
-*Shortest-Path Navigation using Turtlebot3 in Gazebo and RViz.*
+This project implements shortest-path autonomous navigation for a TurtleBot3 robot in a simulated Gazebo maze environment.
 
-The workspace has been preconfigured for **Docker**, ensuring everyone develops and tests in the same ROS environment.  
-All packages and launch files are already included, so all you need to do is **clone**, **build**, and **start coding**.
+The robot uses Karto SLAM to build a map of its environment in real time, then uses A* pathfinding to plan and execute an optimal route to a target destination. The full navigation stack is visualised in RViz.
 
-> **Note:**  
-> `build/` and `devel/` folders are excluded via `.gitignore`.  
-> Git automatically ignores them when you commit or push — so you never have to worry about uploading large build folders.
+Three SLAM methods were evaluated — Hector, RTAB, and Karto. Karto was selected for its accuracy and stability in the simulated environment. Generated map files (`.yaml` and `.pgm`) are saved under `turtlebot3_karto`.
 
 ---
 
-## Cleaning up previous Gazebo Processes
+## Contributors
+- **Nathaniel Kisakye** — Led system design and integration, implemented SLAM (Karto) pipeline, and integrated path planning within the ROS navigation stack
 
-```sh
+- **Samuel Ametefe** — A* pathfinding contribution
+
+---
+
+## Environment Setup (Docker)
+
+### Step 1 — Ensure Docker is running
+Start Docker Desktop before continuing, then open your container terminal.
+
+### Step 2 — Clone and build the workspace
+```bash
+# 1. Clone the repository
+git clone https://github.com/omxln/autonomous-navigation-robot.git
+
+# 2. Enter the workspace
+cd autonomous-navigation-robot
+
+# 3. Build the project
+catkin_make
+
+# 4. Source the setup file
+source devel/setup.bash
+```
+
+To auto-source on every session:
+```bash
+# Optional: auto-source the workspace in every terminal
+echo "source ~/autonomous-navigation-robot/devel/setup.bash" >> ~/.bashrc
+```
+
+---
+
+## Running the Project
+
+### Launch Gazebo
+```bash
+source devel/setup.bash
+roslaunch custom_gazebo_world custom_world.launch
+```
+
+### Launch RViz Navigation
+```bash
+source devel/setup.bash
+roslaunch path_planning turtlebot3_custom_world.launch
+```
+
+### Cleaning up Gazebo processes
+```bash
 rosnode kill /gazebo /gazebo_gui 2>/dev/null || true
 killall -9 gzserver gzclient 2>/dev/null || true
 source devel/setup.bash
 ```
 
+---
 
 ## Repository Structure
-
-![Repository Structure](Screenshot_2025-10-31_163553.png)
-
-
-
-> 🛑 *Do **NOT** edit `build/` or `devel/` — those are auto-generated after building.*
- 
-## Environment Setup (Docker)
-
-Setting up Docker for this project is straightforward.  
-If you need a refresher, check the Moodle guide here:  
-[University Docker Setup (Moodle)](https://moodle.kent.ac.uk/2025/mod/wiki/view.php?id=99986)
-
-The steps below show how to clone and build this workspace **inside Docker**.
+```
+autonomous-navigation-robot/
+├── src/
+│   ├── path_planning/        # A* pathfinding package
+│   ├── custom_gazebo_world/  # Custom maze environment
+│   └── turtlebot3_karto/     # SLAM map files
+├── .gitignore
+└── README.md
+```
+> `build/` and `devel/` are excluded via `.gitignore` — auto-generated after running `catkin_make`
 
 ---
 
-### Step 1 — Ensure Docker is running
-Start **Docker Desktop** before continuing.
-
-Then open your container terminal (you should see `rosoperator@...`).
-
----
-
-### Step 2 — Clone and build the workspace
-```sh
-cd ~                                # Go to your home directory
-
-git clone https://git.cs.kent.ac.uk/nk479/comp6009-group-project-group8.git assessment1_ws  # Clone the repo and save it in a folder called assessment1_ws
- 
-cd assessment1_ws                   # Enter the workspace folder
-
-catkin_make                         # Build the workspace (creates build/ & devel/)
-
-source devel/setup.bash             # Source the environment
-```
-if you wish to auto source you can do it by doing:
-```sh
-    echo "source ~/assessment1_ws/devel/setup.bash" >> ~/.bashrc
-```
-
-Reference: [ROS Setup Guide](https://industrial-training-master.readthedocs.io/en/foxy/_source/session1/ros2/0-ROS-Setup.html)
-
-The workspace should be built and be ready to run now
----
-## Working on the Project
-Always build inside Docker
-
-Run catkin_make inside the container, never on Windows.
-
-**Each session:**
-```sh
-cd ~/assessment1_ws
-source devel/setup.bash
-```
-
-Edit your package files
-
-Modify or add scripts inside:
-
-src/<your_package>/
-
-
-Example:
-
-src/path_planning/scripts/path_planning.py
-
----
-
-# Start Navigation Stack 
-
-### Launch Gazebo:
-
-In your workspace
-```sh
-source devel/setup.bash
-
-roslaunch custom_gazebo_world custom_world.launch
-```
-### Launch RVIZ Path Plan:
-In your workspace
-```sh
-source devel/setup.bash
-
-roslaunch path_planning turtlebot3_custom_world.launch
-```
----
-# SLAM Methods Used
-Within the repository we have three SLAM options available: Hector, RTAB, and Karto. We ultimately chose to use Karto. Its generated `.yaml` and `.pgm` files are saved under `turtlebot3_karto`, and the map is loaded in RViz as `maze_karto` as specified in the launch file.
-Further justification for choosing Karto is provided in the project report.
-
-
-
----
-# Git Commit, Push  & Merge 
-## Commit & push changes
-```
-git checkout dev
-
-git pull
-
-git add .
-
-git commit -m "what you implemented"
-
-git push
-```
-## Merge
-You can do merge requests using the gitlab UI but terminal is as follows 
-```
-git checkout main   # switch to main branch 
-git merge dev       # Merge dev into main 
-
-```
----
-
-## Team Guidelines
-
-Always pull before pushing.
-
-Keep commits short, clear, and meaningful.
-
-Test in RViz or Gazebo before merging.
-
-If something breaks, message group chat.
-
-Ask before editing someone else’s code.
-
----
-
-## Submission Checklist
-
-Before submitting on Moodle:
-
-git pull origin main
-
-Run catkin_make inside Docker (to rebuild)
-
-Test all launch files
-
-Zip the entire assessment1_ws/ folder, including build/ and devel/
-
-Upload the zip + report PDF to Moodle
-
----
-
+## Future Improvements
+- Optimise pathfinding efficiency for dynamic obstacle avoidance
+- Transition navigation stack to ROS2
+- Test on physical TurtleBot3 hardware
